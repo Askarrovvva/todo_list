@@ -1,0 +1,47 @@
+[
+{
+  "model": "webapp.todo",
+  "pk": 1,
+  "fields": {
+    "description": "Домашнее задание №52",
+    "status": "in_progress",
+    "date_completion": null
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 2,
+  "fields": {
+    "description": "Экзамен по макроэкономике",
+    "status": "done",
+    "date_completion": "2025-06-23"
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 3,
+  "fields": {
+    "description": "Купить билеты домой",
+    "status": "new",
+    "date_completion": null
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 4,
+  "fields": {
+    "description": "Посмотреть урок №53",
+    "status": "in_progress",
+    "date_completion": null
+  }
+},
+{
+  "model": "webapp.todo",
+  "pk": 5,
+  "fields": {
+    "description": "Подать на отмену визы",
+    "status": "done",
+    "date_completion": "2025-06-14"
+  }
+}
+]
