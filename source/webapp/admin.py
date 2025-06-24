@@ -1,3 +1,14 @@
 from django.contrib import admin
 
-# Register your models here.
+from webapp.models import ToDo # noqa: F401
+
+
+class ToDoAdmin(admin.ModelAdmin):
+    list_display = ['id', 'description', 'status', 'date_completion']
+    list_filter = ['status', 'id']
+    search_fields = ['description', 'status']
+    fields = ['description', 'status', 'date_completion']
+    readonly_fields = ['date_completion']
+
+
+admin.site.register(ToDo, ToDoAdmin)
