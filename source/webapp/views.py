@@ -18,7 +18,10 @@ def create_todo_list(request):
         if date_completion == '':
             date_completion = None
 
+
+
         ToDo.objects.create(
+            description_detail=request.POST.get("description_detail"),
             description=request.POST.get("description"),
             status=request.POST.get("status"),
             date_completion=date_completion
