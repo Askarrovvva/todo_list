@@ -1,31 +1,28 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
-<br>
-<a href="create/">Создать задачу</a>
-<br>
+{% extends "base.html" %}
 
-{% for todo in todos %}
-    <div class="card mt-3" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">Задача #{{ todo.id }}</h5>
-            <p class="card-text">{{ todo.description_detail }}</p>
-            <p class="card-text">{{ todo.description }}</p>
-            <a href="delete/{{ todo.id }}/" class="btn btn-danger">Delete</a>
-            <a href="#" class="card-link"></a>
-        </div>
+{% block title %}
+    <title>ToDO List</title>
+{% endblock %}
+
+<br>
+<a href="create/">Создать задачу</a><br><br>
+<br>
+{% block content %}
+    <div class="row">
+        {% for to_do in todos %}
+            <div class="col-12 col-md-6 col-lg-3 d-flex mb-3">
+                <div class="card mt-3 w-100 h-100">
+                    <div class="card-body d-flex flex-column">
+                    <h5 class="card-subtitle mb-2 text-body-secondary"><strong>Статус:</strong> {{ to_do.get_status_display }}</h5>
+                    <p class="card-text"><strong>Описание:</strong><br>{{ to_do.description }}</p>
+                    <p class="card-text"><strong>Дата:</strong><br>{{ to_do.date_completion }}</p>
+                    <a href="{% url 'todo_detail' to_do.pk %}" class="card-link">Детальный просмотр</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
-{% endfor %}
+{% endblock %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
