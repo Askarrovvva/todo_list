@@ -1,6 +1,24 @@
 from django.contrib import admin
 
-from .models import Issue
+from webapp.models import Issue
+
+
+class TypeAdmin(admin.ModelAdmin):
+    list_display = ['title']
+    list_filter = ['title']
+    list_display_links = ["title"]
+    search_fields = ['title']
+    fields = ['title']
+    readonly_fields = ['title']
+
+
+class StatusAdmin(admin.ModelAdmin):
+    list_display = ['title']
+    list_filter = ['title']
+    list_display_links = ["title"]
+    search_fields = ['title']
+    fields = ['title']
+    readonly_fields = ['title']
 
 
 class IssueAdmin(admin.ModelAdmin):
@@ -12,4 +30,4 @@ class IssueAdmin(admin.ModelAdmin):
     readonly_fields = ['types']
 
 
-admin.site.register(Issue, IssueAdmin)
+admin.site.register(Issue, IssueAdmin, TypeAdmin, StatusAdmin)
