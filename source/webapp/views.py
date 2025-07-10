@@ -1,52 +1,53 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from webapp.models import ToDo, status_choices
-
-from webapp.forms import ToDoForm
+from .models import Issue
+from .forms import IssueForm
 
 
 def index(request):
-    todos = ToDo.objects.order_by('-date_completion')
-    return render(request, 'index.html', context={"todos": todos})
+    issue = Issue.objects.order_by('-updated_at')
+    return render(request, 'index.html', context={"issue": issue})
 
 
-def todo_create(request):
+def create_issue(request):
     if request.method == "GET":
-        form = ToDoForm()
-        return render(request, 'todo_create.html', {"form": form})
+        form = IssueForm()
+        return render(request, 'create_issue.html', context={"form": form})
     else:
-        form = ToDoForm(request.POST)
-        print(f"Form errors: {form.errors}")
+        form = IssueForm(request.POST)
         if form.is_valid():
-            todo = form.save()
-            return redirect('todo_detail', pk=todo.pk)
-        return render(request, 'todo_create.html', {"form": form})
+            issue = form.save()
+            return redirect('detail', pk=issue.pk)
+        return render(request, "create_issue.html", {"form": form})
 
 
-def todo_update(request, *args, pk, **kwargs):
-    todo = get_object_or_404(ToDo, pk=pk)
+
+
+def delete_issue(request, *args, pk, **kwargs):
+    issue = get_object_or_404(Issue, pk=pk)
     if request.method == "GET":
-        form = ToDoForm(instance=todo)
-        return render(request, "todo_update.html", context={"form": form})
+        return render(request, "delete_issue.html", context={"issue": issue})
     else:
-        form = ToDoForm(data=request.POST, instance=todo)
-        print(f"Form errors: {form.errors}")
+        if issue.statuses.title != "Done":
+            return render(request, "delete_issue.html", context={"issue": issue, "error_message": "Удаление "
+                                                            "запрещено! Задача должна быть выполнена (статус 'Done')."})
+        issue.delete()
+        return redirect("main")
+
+
+def detail_issue(request, *args, pk, **kwargs):
+    issue = get_object_or_404(Issue, pk=pk)
+    return render(request, "detail_issue.html", context={"issue": issue})
+
+
+def update_issue(request, *args, pk, **kwargs):
+    issue = get_object_or_404(Issue, pk=pk)
+    if request.method == "GET":
+        form = IssueForm(instance=issue)
+        return render(request, "update_issue.html", context={"form": form})
+    else:
+        form = IssueForm(data=request.POST, instance=issue)
         if form.is_valid():
-            todo = form.save()
-            return redirect("todo_detail", pk=todo.pk)
-        return render(request, "todo_update.html", {"form": form})
-
-
-
-def todo_delete(request, *args, pk, **kwargs):
-    todo = get_object_or_404(ToDo, pk=pk)
-    if request.method == "GET":
-        return render(request, "todo_delete.html", context={"todo": todo})
-    else:
-        todo.delete()
-        return redirect("todo")
-
-
-def todo_detail(request, *args, pk, **kwargs):
-    todo = get_object_or_404(ToDo, pk=pk)
-    return render(request, "todo_detail.html", context={"todo": todo})
+            issue = form.save()
+            return redirect("detail", pk=issue.pk)
+        return render(request, "update_issue.html", {"form": form})

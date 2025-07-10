@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block links %}
+    <button type="button" class="btn btn-link text-decoration-none" onclick="window.location.href='{% url 'issue_detail' issue.pk %}'">Detail Issue</button>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mb-4">Детали задачи</h2>
+    <div class="card p-4 shadow-sm" style="max-width: 500px; margin: 0 auto;">
+        <p class="mb-3"><strong>Статус:</strong> {{ issue.get_status_display }}</p>
+        <p class="mb-3"><strong>Подробное описание:</strong> {{ issue.description_detail }}</p>
+        <p class="mb-3"><strong>Описание:</strong> {{ issue.description }}</p>
+        <p class="mb-3"><strong>Дата:</strong> {{ issue.date_completion }}</p>
+        <a href="{% url 'main' %}" class="btn btn-secondary mb-2 w-100">На главную</a>
+        <a href="{% url 'issue_delete' issue.pk %}" class="btn btn-danger w-100">Удалить задачу</a>
+    </div>
+{% endblock %}

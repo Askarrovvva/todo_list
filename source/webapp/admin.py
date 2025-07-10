@@ -1,14 +1,15 @@
 from django.contrib import admin
 
-from webapp.models import ToDo # noqa: F401
+from .models import Issue
 
 
-class ToDoAdmin(admin.ModelAdmin):
-    list_display = ['id', 'description', 'status', 'date_completion']
-    list_filter = ['status', 'id']
-    search_fields = ['description', 'status']
-    fields = ['description', 'status', 'date_completion']
+class IssueAdmin(admin.ModelAdmin):
+    list_display = ['id', 'description', 'statuses', 'summary']
+    list_filter = ['statuses', 'id', 'types']
+    list_display_links = ["description"]
+    search_fields = ['description', 'statuses']
+    fields = ['description', 'statuses']
+    readonly_fields = ['types']
 
 
-
-admin.site.register(ToDo, ToDoAdmin)
+admin.site.register(Issue, IssueAdmin)

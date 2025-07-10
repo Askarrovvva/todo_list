@@ -1,11 +1,11 @@
 from django.urls import path
-from webapp.views import index, todo_create, todo_detail, todo_delete, todo_update   # noqa: F401
+
+from .views import index, create_issue, detail_issue, delete_issue, update_issue
 
 urlpatterns = [
-    path('', index, name='todo'),
-    path('create/', todo_create, name='todo_create'),
-    path('todo/<int:pk>/', todo_detail, name="todo_detail"),
-    path('update/<int:pk>/', todo_update, name="todo_update"),
-    path('delete/<int:pk>/', todo_delete, name="todo_delete"),
+    path('', index, name='main'),
+    path('create/', create_issue, name='create'),
+    path('issue/<int:pk>/', detail_issue, name="detail"),
+    path('issue/<int:pk>/update/', update_issue, name='update'),
+    path('issue/<int:pk>/', delete_issue, name="delete"),
 ]
-

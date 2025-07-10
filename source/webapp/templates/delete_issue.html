@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block links %}
+    <button type="button" class="btn btn-link text-decoration-none" onclick="window.location.href='{% url 'issue_delete' issue.pk %}'">Delete Template</button>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mb-4">Удаление задачи</h2>
+    <div class="card p-4 shadow-sm" style="max-width: 500px; margin: 0 auto;">
+        <p class="mb-3">Вы действительно хотите удалить задачу <strong>{{ issue.title }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger w-100 mb-2">Да</button>
+        </form>
+        <a href="{% url 'main' %}" class="btn btn-secondary w-100">Отмена</a>
+    </div>
+{% endblock %}

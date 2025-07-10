@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block links %}
+    <button type="button" class="btn btn-link text-decoration-none" onclick="window.location.href='{% url 'create' %}'">Create Template</button>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mb-4">Создание задачи</h2>
+    <div class="card p-4 shadow-sm" style="max-width: 500px; margin: 0 auto;">
+        {% include 'partial/issue_form.html' with button_text='Создать' %}
+    </div>
+{% endblock %}
