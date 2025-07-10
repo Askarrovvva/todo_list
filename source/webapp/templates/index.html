@@ -1,29 +1,38 @@
 {% extends "base.html" %}
 
 {% block title %}
-    <title>Список задач</title>
+    <title>TODO_LIST</title>
 {% endblock %}
-
-{% block links %}
-    <button type="button" class="btn btn-link text-decoration-none" onclick="window.location.href='{% url 'create' %}'">Создать задачу</button>
-{% endblock %}
-
+<br>
+<a href="create/">Создать задачу</a><br><br>
+<br>
 {% block content %}
-    <h2 class="text-center mb-4">Список задач</h2>
-    {% for issues in issue %}
-        <div class="card p-3 shadow-sm mb-3" style="max-width: 500px; margin: 0 auto;">
-            <h3 class="mb-2"><strong>Статус:</strong> {{ issues.statuses }}</h3>
-            <p class="mb-2"><strong>Типы:</strong>
-                {% for type in issues.types.all %}
-                    {{ type.title }}{% if not forloop.last %}, {% endif %}
-                {% empty %}
-                    нет ни одного типа
-                {% endfor %}
-            </p>
-            <p class="mb-2"><strong>Краткое описание:</strong> {{ issues.summary }}</p>
-            <p class="mb-2"><strong>Полное описание:</strong> {{ issues.description }}</p>
-            <a href="{% url 'issue_detail' issues.pk %}" class="btn btn-info mb-2 w-100">Подробнее</a>
-            <a href="{% url 'issue_update' issues.pk %}" class="btn btn-warning w-100">Изменить</a>
-        </div>
-    {% endfor %}
+    <div class="row">
+        {% for issues in issue %}
+            <div class="class=col-12 col-md-6 col-lg-3">
+                <div class="card mt-3 text-center bg-white rounded-4 h-100 d-flex flex-column align-items-center " style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-subtitle mb-2 text-body-secondary">
+                            <strong>Статус:</strong> {{ issues.statuses }}</h5>
+                        <h5 class="card-subtitle mb-2 text-body-secondary">
+                            <strong>Тип:</strong> {{ issues.types }}</h5>
+                        <p class="card-text"><strong>Краткое описание</strong><br>{{ issues.summary }}</p>
+                        <p class="card-text"><strong>Полное описание:</strong><br>{{ issues.description }}</p>
+                        <a href="{% url 'update' issues.pk %}">
+                            <i class="fa-2x fa-sharp fa-regular fa-pen-to-square"></i>
+                        </a>
+                        <a href="{% url 'detail' issues.pk %}">
+                            <i class="fa-2x fa-solid fa-circle-info"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+</html>

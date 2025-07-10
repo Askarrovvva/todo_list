@@ -1,15 +1,17 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Issue
+from webapp.models import Issue, Type, Status
 from django.forms import widgets
 
 
 class IssueForm(forms.ModelForm):
+    statuses = forms.ModelChoiceField(queryset=Status.objects.all())
+    types = forms.ModelChoiceField(queryset=Type.objects.all())
+
     def clean_summary(self):
         summary = self.cleaned_data['summary']
         if len(summary) <= 3:
-            raise ValidationError("Описание слишком краткое. Пожалуйста, добавьте больше деталей, "
-                                  "чтобы сделать его информативным ")
+            raise ValidationError("Введённое описание слишком короткое. Добавьте дополнительные детали.")
         else:
             return summary
 
