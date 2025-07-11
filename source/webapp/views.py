@@ -26,7 +26,7 @@ class IssueDetailView(TemplateView):
         return context
 
     def get_template_names(self):
-        return "detail.html"
+        return "detail_issue.html"
 
 
 class CreateIssueView(View):
@@ -35,7 +35,7 @@ class CreateIssueView(View):
 
     def get(self, request, *args, **kwargs):
         form = IssueForm()
-        return render(request, 'create.html', context={"form": form})
+        return render(request, 'create_issue.html', context={"form": form})
 
     def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
@@ -46,7 +46,7 @@ class CreateIssueView(View):
 
         return render(
             request,
-            "create.html",
+            "create_issue.html",
             {"form": form})
 
 
@@ -57,7 +57,7 @@ class DeleteIssueView(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        return render(request, "delete.html", context={"issue": self.issue})
+        return render(request, "delete_issue.html", context={"issue": self.issue})
 
     def post(self, request, *args, **kwargs):
         self.issue.delete()
@@ -72,7 +72,7 @@ class UpdateIssueView(View):
     def get(self, request, *args, **kwargs):
         form = IssueForm(instance=self.issue)
         return render(
-            request, "update.html",
+            request, "update_issue.html",
             context={"form": form})
 
     def post(self, request, *args, **kwargs):
@@ -83,5 +83,5 @@ class UpdateIssueView(View):
         else:
             return render(
                 request,
-                "update.html",
+                "update_issue.html",
                 {"form": form})

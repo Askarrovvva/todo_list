@@ -6,7 +6,7 @@ from django.forms import widgets
 
 class IssueForm(forms.ModelForm):
     statuses = forms.ModelChoiceField(queryset=Status.objects.all())
-    types = forms.ModelChoiceField(queryset=Type.objects.all())
+    types = forms.ModelMultipleChoiceField(queryset=Type.objects.all())
 
     def clean_summary(self):
         summary = self.cleaned_data['summary']
