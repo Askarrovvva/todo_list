@@ -1,0 +1,37 @@
+{
+  "model": "webapp.issue",
+  "pk": 3,
+  "fields": {
+    "summary": "врамвпырмсвыпрмс",
+    "description": "Первое задание",
+    "statuses": 1,
+    "types": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 4,
+  "fields": {
+    "summary": "врмоавимрами",
+    "description": "Второе",
+    "statuses": 2,
+    "types": [
+      2
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 5,
+  "fields": {
+    "summary": "33333",
+    "description": "333",
+    "statuses": 3,
+    "types": [
+      3
+    ]
+  }
+}
+]
