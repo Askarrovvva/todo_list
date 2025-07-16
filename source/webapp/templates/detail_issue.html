@@ -8,7 +8,7 @@
             <h6 class="card-subtitle mb-2 text-body-secondary"><strong>Тип:</strong> {% for type in issue.types.all %}
                 {{ type.title }}{% if not forloop.last %}, {% endif %}
                 {% empty %}
-                    <span>нет ни одного типа</span>
+                    <span>Нет ни одного типа</span>
                 {% endfor %}
             </h6>
             <p class="card-text"><strong>Краткое описание:</strong><br>{{ issue.summary }}</p>
