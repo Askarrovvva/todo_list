@@ -4,7 +4,7 @@ from django.views import View
 from django.views.generic import TemplateView
 
 from webapp.models import Issue
-from webapp.forms import IssueForm
+from webapp.forms.issues import IssueForm
 
 
 class IssueListView(TemplateView):
@@ -12,7 +12,7 @@ class IssueListView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         issue = Issue.objects.order_by('-updated_at')
-        return render(request, 'index.html', context={"issue": issue})
+        return render(request, 'issues/index.html', context={"issue": issue})
 
 
 class IssueDetailView(TemplateView):
@@ -26,7 +26,7 @@ class IssueDetailView(TemplateView):
         return context
 
     def get_template_names(self):
-        return "detail_issue.html"
+        return "issues/detail_issue.html"
 
 
 class CreateIssueView(View):
@@ -35,7 +35,7 @@ class CreateIssueView(View):
 
     def get(self, request, *args, **kwargs):
         form = IssueForm()
-        return render(request, 'create_issue.html', context={"form": form})
+        return render(request, 'issues/create_issue.html', context={"form": form})
 
     def post(self, request, *args, **kwargs):
         form = IssueForm(data=request.POST)
@@ -46,7 +46,7 @@ class CreateIssueView(View):
 
         return render(
             request,
-            "create_issue.html",
+            "issues/create_issue.html",
             {"form": form})
 
 
@@ -57,7 +57,7 @@ class DeleteIssueView(View):
         return super().dispatch(request, *args, **kwargs)
 
     def get(self, request, *args, **kwargs):
-        return render(request, "delete_issue.html", context={"issue": self.issue})
+        return render(request, "issues/delete_issue.html", context={"issue": self.issue})
 
     def post(self, request, *args, **kwargs):
         self.issue.delete()
@@ -72,7 +72,7 @@ class UpdateIssueView(View):
     def get(self, request, *args, **kwargs):
         form = IssueForm(instance=self.issue)
         return render(
-            request, "update_issue.html",
+            request, "issues/update_issue.html",
             context={"form": form})
 
     def post(self, request, *args, **kwargs):
@@ -83,5 +83,5 @@ class UpdateIssueView(View):
         else:
             return render(
                 request,
-                "update_issue.html",
+                "issues/update_issue.html",
                 {"form": form})
