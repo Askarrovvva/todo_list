@@ -1,72 +1,238 @@
 [
 {
-  "model": "webapp.todo",
-  "pk": 1,
-  "fields": {
-    "description": "Домашнее задание №52",
-    "description_detail": null,
-    "status": "in_progress",
-    "date_completion": null
-  }
-},
-{
-  "model": "webapp.todo",
+  "model": "webapp.basemodel",
   "pk": 2,
   "fields": {
-    "description": "Экзамен по макроэкономике",
-    "description_detail": null,
-    "status": "done",
-    "date_completion": "2025-06-23"
+    "created_at": "2025-07-22T09:56:00.639Z",
+    "updated_at": "2025-07-22T09:56:00.639Z"
   }
 },
 {
-  "model": "webapp.todo",
+  "model": "webapp.basemodel",
   "pk": 3,
   "fields": {
-    "description": "Купить билеты домой",
-    "description_detail": null,
-    "status": "new",
-    "date_completion": null
+    "created_at": "2025-07-22T09:58:47.509Z",
+    "updated_at": "2025-07-22T10:07:45.247Z"
   }
 },
 {
-  "model": "webapp.todo",
+  "model": "webapp.basemodel",
   "pk": 4,
   "fields": {
-    "description": "Посмотреть урок №53",
-    "description_detail": null,
-    "status": "in_progress",
-    "date_completion": null
+    "created_at": "2025-07-23T06:06:05.389Z",
+    "updated_at": "2025-07-23T06:06:05.389Z"
   }
 },
 {
-  "model": "webapp.todo",
+  "model": "webapp.basemodel",
   "pk": 5,
   "fields": {
-    "description": "Подать на отмену визы",
-    "description_detail": null,
-    "status": "done",
-    "date_completion": "2025-06-14"
+    "created_at": "2025-07-23T06:06:38.705Z",
+    "updated_at": "2025-07-23T06:06:38.705Z"
   }
 },
 {
-  "model": "webapp.todo",
+  "model": "webapp.basemodel",
   "pk": 6,
   "fields": {
-    "description": "HW#53",
-    "description_detail": "Нужно закончить добашнюю работу и сдать ее до делайна. Не забыть ничего и все закомиттить а затем запушить в гитхаб. А также, постаться применить все что было показанона вебинаре",
-    "status": "in_progress",
-    "date_completion": "2025-06-27"
+    "created_at": "2025-07-23T06:07:01.856Z",
+    "updated_at": "2025-07-23T06:07:01.856Z"
   }
 },
 {
-  "model": "webapp.todo",
+  "model": "webapp.basemodel",
   "pk": 7,
   "fields": {
-    "description": "Экзамен по критическому мышлению",
-    "description_detail": "В последние годы многие школы и университеты начали отказываться от традиционных экзаменов в пользу проектных заданий. Сторонники этого подхода утверждают, что экзамены проверяют лишь способность запоминать информацию, тогда как проекты развивают настоящие навыки — такие как исследование, сотрудничество и решение проблем. Они также считают, что экзамены создают излишнее давление и не отражают реальных способностей студентов. Противники же считают, что без экзаменов невозможно объективно измерить знания, а проекты могут быть нечестно выполнены — например, с чьей-то помощью. Более того, они указывают, что в жизни часто нужно демонстрировать свои знания в ограниченное время, как на экзамене, и что это тоже важный навык.\r\n\r\nВопрос в том, какой подход более честно и эффективно оценивает способности студента: экзамены или проекты?\r\n\r\n",
-    "status": "done",
-    "date_completion": "2025-06-17"
+    "created_at": "2025-07-23T06:07:36.144Z",
+    "updated_at": "2025-07-23T06:07:36.144Z"
+  }
+},
+{
+  "model": "webapp.basemodel",
+  "pk": 8,
+  "fields": {
+    "created_at": "2025-07-23T06:07:56.875Z",
+    "updated_at": "2025-07-23T06:07:56.875Z"
+  }
+},
+{
+  "model": "webapp.basemodel",
+  "pk": 9,
+  "fields": {
+    "created_at": "2025-07-23T06:08:28.394Z",
+    "updated_at": "2025-07-23T06:08:28.394Z"
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 2,
+  "fields": {
+    "summary": "111111",
+    "description": "11111",
+    "statuses": 1,
+    "project": 1,
+    "is_deleted": false,
+    "types": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 3,
+  "fields": {
+    "summary": "111111",
+    "description": "111112",
+    "statuses": 1,
+    "project": 1,
+    "is_deleted": false,
+    "types": [
+      1
+    ]
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 4,
+  "fields": {
+    "summary": "12345",
+    "description": "Создать",
+    "statuses": 2,
+    "project": 2,
+    "is_deleted": false,
+    "types": []
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 5,
+  "fields": {
+    "summary": "прапрапра",
+    "description": "Лалалалалала",
+    "statuses": 2,
+    "project": 2,
+    "is_deleted": false,
+    "types": []
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 6,
+  "fields": {
+    "summary": "Лилилили",
+    "description": "Ляляллял",
+    "statuses": 3,
+    "project": 2,
+    "is_deleted": false,
+    "types": []
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 7,
+  "fields": {
+    "summary": "6245362",
+    "description": "Пилипилп",
+    "statuses": 2,
+    "project": 3,
+    "is_deleted": false,
+    "types": []
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 8,
+  "fields": {
+    "summary": "двадвадва",
+    "description": "Разразразраз",
+    "statuses": 1,
+    "project": 3,
+    "is_deleted": false,
+    "types": []
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 9,
+  "fields": {
+    "summary": "Пингвиненок",
+    "description": "Пророро",
+    "statuses": 2,
+    "project": 3,
+    "is_deleted": false,
+    "types": []
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 1,
+  "fields": {
+    "title": "Task"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 2,
+  "fields": {
+    "title": "Enhancement"
+  }
+},
+{
+  "model": "webapp.type",
+  "pk": 3,
+  "fields": {
+    "title": "Bug"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 1,
+  "fields": {
+    "title": "New"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 2,
+  "fields": {
+    "title": "In Progress"
+  }
+},
+{
+  "model": "webapp.status",
+  "pk": 3,
+  "fields": {
+    "title": "Done"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 1,
+  "fields": {
+    "start_date": "2025-07-22",
+    "end_date": "2025-08-31",
+    "title": "Первый проект",
+    "description": "Первый проект1"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 2,
+  "fields": {
+    "start_date": "2025-07-22",
+    "end_date": "2025-08-31",
+    "title": "Второй проект",
+    "description": "Второй проект"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 3,
+  "fields": {
+    "start_date": "2025-07-22",
+    "end_date": null,
+    "title": "Третий проект",
+    "description": "Третий проект"
   }
 }
 ]
