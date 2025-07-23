@@ -1,2 +1,2 @@
-from webapp.views.issues import CreateIssueView, DeleteIssueView, IssueDetailView, IssueListView, UpdateIssueView
-from webapp.views.projects import ProjectListView, ProjectDetailView, CreateProjectView
+from webapp.views.issues import IssueDetailView, IssueDeleteView, IssueUpdateView, IssueCreateView
+from webapp.views.projects import ProjectListView, ProjectDetailView, ProjectCreateView, ProjectDeleteView, ProjectUpdateView

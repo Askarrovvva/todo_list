@@ -1,13 +1,10 @@
 from django.db.models import Q
+from django.urls import reverse_lazy
 from django.utils.http import urlencode
-from django.shortcuts import render, redirect, get_object_or_404
-from django.views import View
-
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from webapp.models import Project
-from webapp.forms.search_form import SearchForm
-from webapp.forms.projects import ProjectForm
+from webapp.forms import SearchForm, ProjectForm
 
 
 class ProjectListView(ListView):
@@ -20,7 +17,7 @@ class ProjectListView(ListView):
     def dispatch(self, request, *args, **kwargs):
         self.form = self.get_form()
         self.search_value = self.get_search_value()
-        return super().dispatch(*args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_form(self):
         return SearchForm(self.request.GET)
@@ -34,13 +31,13 @@ class ProjectListView(ListView):
         queryset = super().get_queryset()
         if self.search_value:
             queryset = queryset.filter(
-                Q(title__contains=self.search_value) | Q(description__contains=self.search_value)
+                Q(title__icontains=self.search_value) | Q(description__icontains=self.search_value)
             )
-
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["search_form"] = self.form
         if self.search_value:
             context["search"] = urlencode({"search": self.search_value})
             context["search_value"] = self.search_value
@@ -48,19 +45,27 @@ class ProjectListView(ListView):
 
 
 class ProjectDetailView(DetailView):
-    template_name = "projects/detail_project.html.html"
+    template_name = "projects/detail_project.html"
     model = Project
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["projects"] = self.object.projects.order_by('-start_date')
+        context["issues"] = self.object.issues.order_by('-summary')
         return context
 
 
-class CreateProjectView(CreateView):
-    model = Project
+class ProjectCreateView(CreateView):
     template_name = 'projects/create_project.html'
     form_class = ProjectForm
 
-    def get_success_url(self):
-        return redirect("detail_project.html",  kwargs={'pk': self.object.pk})
+
+class ProjectUpdateView(UpdateView):
+    template_name = 'projects/update_project.html'
+    model = Project
+    form_class = ProjectForm
+
+
+class ProjectDeleteView(DeleteView):
+    template_name = 'projects/delete_project.html'
+    model = Project
+    success_url = reverse_lazy('main')

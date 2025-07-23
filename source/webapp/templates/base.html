@@ -27,7 +27,7 @@
             <ul class="navbar-nav">
                 {% block links %}
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'create' %}">Создание задач</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'create_project' %}">Создание проекта</a>
                     </li>
                 {% endblock %}
             </ul>
@@ -37,6 +37,10 @@
 
 <div class="container">
     {% block content %}
+    {% endblock %}
+</div>
+<div>
+    {% block paginator %}
     {% endblock %}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
