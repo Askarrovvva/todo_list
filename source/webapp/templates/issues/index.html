@@ -9,27 +9,27 @@
     <a class="btn btn-primary mb-3" href="{% url 'create' %}">Создать задачу</a>
 
     <div class="row">
-        {% for issues in issue %}
+        {% for issue in issues %}
             <div class="col-12 col-md-6 col-lg-3 mt-3">
                 <div class="card text-center bg-white rounded-4 h-100 d-flex flex-column align-items-center" style="width: 18rem;">
                     <div class="card-body">
                         <h5 class="card-subtitle mb-2 text-body-secondary">
-                            <strong>Статус:</strong> {{ issues.statuses }}
+                            <strong>Статус:</strong> {{ issue.statuses }}
                         </h5>
                         <h5 class="card-subtitle mb-2 text-body-secondary">
                             <strong>Типы:</strong>
-                            {% for type in issues.types.all %}
+                            {% for type in issue.types.all %}
                                 {{ type.title }}{% if not forloop.last %}, {% endif %}
                             {% empty %}
                                 <span>Нет ни одного типа</span>
                             {% endfor %}
                         </h5>
-                        <p class="card-text"><strong>Краткое описание:</strong><br>{{ issues.summary }}</p>
-                        <p class="card-text"><strong>Полное описание:</strong><br>{{ issues.description }}</p>
-                        <a href="{% url 'update' issues.pk %}" class="mx-1" title="Редактировать">
+                        <p class="card-text"><strong>Краткое описание:</strong><br>{{ issue.summary }}</p>
+                        <p class="card-text"><strong>Полное описание:</strong><br>{{ issue.description }}</p>
+                        <a href="{% url 'update' issue.pk %}" class="mx-1" title="Редактировать">
                             <i class="fa-2x fa-regular fa-pen-to-square"></i>
                         </a>
-                        <a href="{% url 'detail' issues.pk %}" class="mx-1" title="Подробнее">
+                        <a href="{% url 'detail' issue.pk %}" class="mx-1" title="Подробнее">
                             <i class="fa-2x fa-solid fa-circle-info"></i>
                         </a>
                     </div>

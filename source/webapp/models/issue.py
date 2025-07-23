@@ -1,14 +1,31 @@
 from django.db import models
+from django.urls import reverse
 
-from webapp.models.base_model import BaseModel
+from webapp.models import BaseModel
+
+
+class Manager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_deleted=False)
 
 
 class Issue(BaseModel):
-    summary = models.CharField(max_length=50, null=False, blank=False, verbose_name="Краткое Описание")
+    summary = models.CharField(max_length=50, null=False, blank=False, verbose_name="Краткое описание")
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Подробное описание")
     statuses = models.ForeignKey('webapp.Status', related_name='issues', verbose_name='Статусы',
                                  on_delete=models.PROTECT)
     types = models.ManyToManyField('webapp.Type', related_name='issues', verbose_name='Типы', blank=True)
+    project = models.ForeignKey('webapp.Project', null=False, blank=False, related_name='issues',
+                                on_delete=models.CASCADE, verbose_name='Проект')
+    is_deleted = models.BooleanField(default=False)
+    objects = Manager()
+
+    def delete(self):
+        self.is_deleted = True
+        self.save()
+
+    def get_absolute_url(self):
+        return reverse("webapp:detail", kwargs={'pk': self.pk})
 
     def __str__(self):
         return f"{self.summary} {self.description} {self.statuses}"
