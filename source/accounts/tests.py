@@ -1,3 +1,3 @@
 from django.test import TestCase
 
-# webapp:create your tests here.
+# Create your tests here.

@@ -9,7 +9,7 @@ class Project(models.Model):
     description = models.TextField(max_length=500, null=True, blank=True, verbose_name="Описание")
 
     def get_absolute_url(self):
-        return reverse("detail_project", kwargs={'pk': self.pk})
+        return reverse("webapp:detail_project", kwargs={'pk': self.pk})
 
     def __str__(self):
         return f'{self.title} {self.description}'
