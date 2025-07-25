@@ -234,5 +234,35 @@
     "title": "Третий проект",
     "description": "Третий проект"
   }
+},
+{
+  "model": "webapp.project",
+  "pk": 5,
+  "fields": {
+    "start_date": "2025-07-24",
+    "end_date": "2025-10-11",
+    "title": "Четвертый проект",
+    "description": "Четвертый проект"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 6,
+  "fields": {
+    "start_date": "2025-08-07",
+    "end_date": "2025-11-28",
+    "title": "Пятый проект",
+    "description": "Пятый проект"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 7,
+  "fields": {
+    "start_date": "2025-07-01",
+    "end_date": "2025-07-24",
+    "title": "Шестой проект",
+    "description": "Шестой проект"
+  }
 }
 ]
