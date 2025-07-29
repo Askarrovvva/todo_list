@@ -36,15 +36,14 @@
                 {% if not request.user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                           href="{% url 'accounts:login' %}?next={{ request.get_full_path }}">Войти</a>
+                           href="{% url 'accounts:login' %}?next={{ request.GET.next }}">Войти</a>
                     </li>
-                     <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link active" aria-current="page"
-                           href="{% url 'accounts:registration' %}?next={{ request.get_full_path }}">Регистрация</a>
-                    </li>
+                           href="{% url 'accounts:registration' %}?next={{ request.GET.next }}">Регистрация</a></li>
                 {% else %}
                     <li class="nav-item">
-                        <form action="{% url 'accounts:logout' %}?next={{ request.get_full_path  }}" method="post">
+                        <form action="{% url 'accounts:logout' %}" method="post">
                             {% csrf_token %}
                             <button type="submit" class="nav-link">Выйти</button>
                         </form>
