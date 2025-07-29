@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView
@@ -6,7 +6,7 @@ from webapp.models import Issue, Project
 from webapp.forms import IssueForm
 
 
-class IssueCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+class IssueCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'issues/create.html'
     form_class = IssueForm
     permission_required = 'webapp.add_issue'
@@ -34,7 +34,7 @@ class IssueDetailView(DetailView):
         return Issue.objects.filter(is_deleted=False)
 
 
-class IssueDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+class IssueDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'issues/delete.html'
     model = Issue
     success_url = reverse_lazy('webapp:main')
@@ -52,7 +52,7 @@ class IssueDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
                 and self.request.user in issue.users.all())
 
 
-class IssueUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
+class IssueUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'issues/update.html'
     form_class = IssueForm
     model = Issue

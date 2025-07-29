@@ -55,7 +55,7 @@ class ProjectDetailView(DetailView):
         return context
 
 
-class ProjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, CreateView):
     template_name = 'projects/create_project.html'
     form_class = ProjectForm
     permission_required = 'webapp.add_project'
@@ -70,7 +70,7 @@ class ProjectCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView)
         return super().form_valid(form)
 
 
-class ProjectUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = 'projects/update_project.html'
     model = Project
     form_class = ProjectForm
@@ -82,7 +82,7 @@ class ProjectUpdateView(PermissionRequiredMixin, LoginRequiredMixin, UpdateView)
                 self.request.user in project.users.all())
 
 
-class ProjectDeleteView(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
     template_name = 'projects/delete_project.html'
     model = Project
     success_url = reverse_lazy('webapp:main')

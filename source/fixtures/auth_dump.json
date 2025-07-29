@@ -1,0 +1,168 @@
+[
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Project Manager",
+        "permissions": [
+            [
+                "add_issue",
+                "webapp",
+                "issue"
+            ],
+            [
+                "change_issue",
+                "webapp",
+                "issue"
+            ],
+            [
+                "delete_issue",
+                "webapp",
+                "issue"
+            ],
+            [
+                "add_project",
+                "webapp",
+                "project"
+            ],
+            [
+                "change_project",
+                "webapp",
+                "project"
+            ],
+            [
+                "delete_project",
+                "webapp",
+                "project"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "Team Lead",
+        "permissions": [
+            [
+                "add_issue",
+                "webapp",
+                "issue"
+            ],
+            [
+                "change_issue",
+                "webapp",
+                "issue"
+            ],
+            [
+                "delete_issue",
+                "webapp",
+                "issue"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+        "name": "Developer",
+        "permissions": [
+            [
+                "add_issue",
+                "webapp",
+                "issue"
+            ],
+            [
+                "change_issue",
+                "webapp",
+                "issue"
+            ]
+        ]
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$QH6gB3f34GNMB2qHkRLKiA$Wb7dXSmMV6kmbCdt5TX37S4GXtZBYk9COe8K/iB9hBM=",
+        "last_login": "2025-07-29T11:11:39.011Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2025-07-29T07:27:13Z",
+        "groups": [
+            [
+                "Project Manager"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$NaRf0UGQHUj6KVMlWifa1N$0SkoZ97ubjFZ5UMxt1YVqwYV0lRRJNODSV5onZ1b2Ew=",
+        "last_login": "2025-07-29T10:56:09.737Z",
+        "is_superuser": false,
+        "username": "admin1",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-07-29T08:10:49Z",
+        "groups": [
+            [
+                "Team Lead"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$hcupLLS7oy5JgoDI4s53uc$5lQsD7A/xzFIybCbSCd9Fx/kUMcWAl5nwcA2SAy0RJU=",
+        "last_login": "2025-07-29T11:12:17.764Z",
+        "is_superuser": false,
+        "username": "Askarova1",
+        "first_name": "Aigerim",
+        "last_name": "",
+        "email": "askarovaaigerim67@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-07-29T08:37:34Z",
+        "groups": [
+            [
+                "Team Lead"
+            ]
+        ],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$4wj9hsB8OeQSnaGeWzjeqP$/pzHxNUWuns9Wi2IAAh2ZkkZNdx96VGP2OlPqMZStLg=",
+        "last_login": "2025-07-29T11:09:58.572Z",
+        "is_superuser": false,
+        "username": "user",
+        "first_name": "User",
+        "last_name": "",
+        "email": "user777@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2025-07-29T11:09:57.792Z",
+        "groups": [],
+        "user_permissions": []
+    }
+}
+]
