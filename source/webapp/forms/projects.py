@@ -15,10 +15,9 @@ class ProjectForm(forms.ModelForm):
 
     def clean_description(self):
         description = self.cleaned_data['description']
-        if not len(description) <= 75:
-            raise ValidationError("Это поле очень длинное, нужно меньше символов")
-        else:
-            return description
+        if len(description) > 75:
+            raise ValidationError("Это поле слишком длинное, нужно меньше символов.")
+        return description
 
     class Meta:
         model = Project
